@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>职位管理页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="/libs/requirejs/require.min.js" data-main="/js/position/position.js"></script>
+	<style type="text/css">
+		#table-box{
+		width: 1251px;
+		min-height:400px;
+		border: 1px solid red;
+		margin: -20px auto;
+		}
+		#table-box .nav-box{
+		margin-top:-40px;
+		float:right;
+		}
+		#table-box table th{
+		font-size: 12px;
+		font-weight: bold;
+		}
+		#spanbtn{
+		float: left;
+		font-weight: bold;
+		}
+		#addbtn{
+			float:right;
+			text-align: center;
+			background: #007AFF;
+			color: #fff;
+			width: 50px;
+		}
+		.list-tbody td img{
+			width: 50px;
+			height: 25px;
+		}
+		
+	</style>
+	</head>
+	<body>
+<!-- 导航 -->	
+ <div class="container-fluid">
+	<header>
+	</header>
+  </div><!-- /.container-fluid -->
+
+	<div id="table-box">
+	<span id="spanbtn">职位管理</span>
+	<input type="button" data-toggle="modal" data-target="#addmodlu" name="" id="addbtn" value="添加" />	
+	
+	
+	
+		
+	
+		<table id="table" class="table table-bordered">
+         <tr>
+			<th>序号</th>
+			<th>公司logo</th>
+			<th>职位名称</th>
+			<th>公司名称</th>
+			<th>工作经验</th>
+			<th>职业类型</th>
+			<th>工作地点</th>
+			<th>职位资新</th>
+			<th>操作</th>
+		 </tr>
+		 
+		<tbody class="list-tbody">
+		
+		
+		
+		
+		</tbody> 
+		</table>	
+
+<nav aria-label="Page navigation" class="nav-box">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&lt;</span>
+      </a>
+    </li>
+    <li class=""><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&gt;</span>
+      </a>
+    </li>
+  </ul>
+</nav>	
+	
+	
+	
+		
+	</div>		
+	
+<script type="text/html" id="list-template">
+{{each list curr index}}
+	<tr data-id="{{curr._id}}">
+		<td>{{index+1}}</td>
+		<td> <img class="logo" src="{{curr.logo}}" > </td>
+		<td class="position">{{curr.position}}</td>
+		<td class="company">{{curr.company}}</td>
+		<td class="experience">{{curr.experience}}</td>
+		<td class="worktite">{{curr.worktite}}</td>
+		<td class="address">{{curr.address}}</td>
+		<td class="salary">{{curr.salary}}</td>
+		<td> <a class="amend" href="#" data-toggle="modal" data-target="#Amendmodlu">修改</a>  <a href="#">删除</a></td>
+	</tr>	 
+{{/each}}
+	
+	
+</script>	
+	
+	
+	
+	
+	
+	
+<!-- 模态框 -->	
+<div class="modal fade" id="addmodlu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+  </div>
+  <div class="modal-body">
+		
+	<form class="increase-form">
+	<div class="form-group">
+		<label for="exampleInputEmail1">LOGO</label>
+		<input type="file" class="form-control" id="exampleInputEmail1" placeholder="" name="logo">
+	</div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">职位名称</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="输入职位名称" name="position">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">公司名称</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="输入公司名称" name="company">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">工作经验</label>
+  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="输入工作经验" name="experience">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">职业类型</label>
+  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="输入职业类型" name="worktite">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">工作地点</label>
+  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="输入工作地点" name="address">
+  </div>
+  
+  <div class="form-group">
+  <label for="exampleInputEmail1">职位资新</label>
+  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="输入职位资新" name="salary">
+  </div>
+
+</form>
+  </div>
+  <div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	<button type="button" class="btn btn-primary addbtn2" id="addbtn2">确认添加</button>
+  </div>
+</div>
+</div>
+</div>				
+	
+
+<!-- 修改模态框 -->	
+<div class="modal fade" id="Amendmodlu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+  </div>
+  <div class="modal-body">
+		
+	<form class="">
+	<input type="hidden" name="_id" id="" value="" />
+	<div class="form-group">
+		<label for="exampleInputEmail1">LOGO(<span id="logospan"></span>)</label>
+		<input type="file" class="form-control logo" id="exampleInputEmail1" placeholder="" name="logo">
+	</div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">职位名称</label>
+    <input type="text" class="form-control position" id="exampleInputEmail1" placeholder="输入职位名称" name="position">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">公司名称</label>
+    <input type="text" class="form-control company" id="exampleInputPassword1" placeholder="输入公司名称" name="company">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">工作经验</label>
+  <input type="text" class="form-control experience" id="exampleInputEmail1" placeholder="输入工作经验" name="experience">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">职业类型</label>
+  <input type="text" class="form-control worktite" id="exampleInputEmail1" placeholder="输入职业类型" name="worktite">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">工作地点</label>
+  <input type="text" class="form-control address" id="address" placeholder="输入工作地点" name="address">
+  </div>
+  
+  <div class="form-group">
+  <label for="exampleInputEmail1">职位资新</label>
+  <input type="text" class="form-control salary" id="exampleInputEmail1" placeholder="输入职位资新" name="salary">
+  </div>
+
+</form>
+  </div>
+  <div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	<button type="button" class="btn btn-primary addbtn2" id="addbtn2">确认添加</button>
+  </div>
+</div>
+</div>
+</div>				
+
+	
+	
+	
+	
+	
+	
+	</body>
+</html>

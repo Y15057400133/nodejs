@@ -1,0 +1,8 @@
+第一个nodejs项目， 一个职位管理系统
+node.js
+mongodb
+express
+需要配置mogond数据库，
+先在本地磁盘创建数据存储位置  如：d：/data/mongo   启动服务之后才能开启服务器install项目 npm start才有用
+
+
